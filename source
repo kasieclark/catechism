@@ -1,0 +1,984 @@
+.data
+
+logo:				.asciiz "\n    ?     ?\n   ? ?   ? ?\n  ?   ???   ?\n ?           ?\n?   ?     ?   ?  \n ?           ?  ?? ?? ? ?? ?? ?? ? ?? ???\n  ???????????   ?  ?? ? ?  ?  ?? ? ?? ? ?\n   ?????????    ?? ?? ? ?? ?? ?? ? ?? ? ?"
+greeting:			.asciiz "\nWelcome to Catechism, the trivia game about cats!" 
+selection:			.asciiz "\nMake a selection below:\n1) Play\n2) Learn\n3) Information\n4) Exit\n>>  "
+play:				.asciiz "\nLevel difficulty:\n1) Easy\n2) Medium\n3) Difficult\n>>  "
+noSelect:			.asciiz "\nNot a valid selection. Please try again."
+selection2:			.asciiz "\n1) How to play 'Catechism'\n2) Credits\n>>  "
+explain:			.asciiz "\n1 | For True or False questions, make your answer by entering 1 for False and 2 for True.\n2 | For multiple choice questions, enter a number 1-4 for the corresponding answer. 1=A, 2=B, 3=C, 4=D, etc.\n3 | If you make an error do not use backspace; backspace is not function in ASM. Simply type the correct response. The compiler will read this response; not the incorrect one.\n4 | All yes or no questions are answered with 1 for yes and 2 for no.\n"
+furtherInformation:	.asciiz "\nCoded using MIPS architecture assembly machine language.\nProgrammed in Visual Studio (various versions, 2012+) and Notepad++.\nTested and compiled using PCSpim.\nCreated for CSC 2200 Methodist University Spring 2015 Final project.\nDistributed for free use at [dropbox link]\nMade by Kasie Leigh Clark 03/24/2015-00/00/2015\nThanks for playing.\n"
+
+easyQOne:			.asciiz "\nQuestion #1\nWhat sound does a cat make?\nA) Mew\nB) Meow\nC) Purr\nD) All of the above\n>>  "
+easyQTwo:			.asciiz "\nQuestion #2\nTrue or False: Meow Mix is a well known brand of Cat Food with a jaunty tune that goes like so: 'Meow Meow Meow Meow / Meow Meow Meow Meow / Meow-Meow Meow Meow / Meow M-Meow Meow Meow'\n>>  "
+easyQThree:			.asciiz "\nQuestion #3\nWhat do mice fear?\nA) Too much cheese\nB) A life of loneliness\nC) Cats\nD) The dark\n>>  "
+easyQFour:			.asciiz "\nQuestion #4\nTrue or False: Cats are omnivores.\n>>  "
+easyQFive:			.asciiz "\nQuestion #5\nWhich is not a famous cartoon cat?\nA) Tom\nB) Jerry\nC) Sylvester\nD) Tigger\n>>  "
+
+easyScore:			.asciiz "\nYour score for the Easy section is %"
+easyPass:			.asciiz "\nMe-WOW! You got a great score! Would you like to advance to the medium level?\n>>  "
+easyFail:			.asciiz "\nNot pawful, but not great either. Visit the learn section before trying again, maybe!\n>>  "
+
+medQOne:			.asciiz "\nQuestion #1\nQuestion?\nA)Right\nB)Wrong\nC)Wrong\nD)Wrong\n>>  "
+medQTwo:			.asciiz "\nQuestion #2\nQuestion?\nA)Wrong\nB)Wrong\nC)Right\nD)Wrong\n>>  "
+medQThree:			.asciiz "\nQuestion #3\nTrue or False: Question.\n>> "
+medQFour:			.asciiz "\nQuestion #4\nQuestion?\nA)Wrong\nB)Right\nC)Wrong\nD)Wrong\n>>  "
+medQFive:			.asciiz "\nQuestion #5\nQuestion?\nAWrong)\nB)Right\nC)Wrong\nD)Wrong\n>>  "
+medQSix:			.asciiz "\nQuestion #6\nTrue or False: Question.\n>> "
+medQSeven:			.asciiz "\nQuestion #7\nQuestion?\nA)Right\nB)Wrong\nC)Wrong\nD)Wrong\n>>  "
+medQEight:			.asciiz "\nQuestion #8\nQuestion?\nA)Wrong\nB)Wrong\nC)Wrong\nD)Right\n>>  "
+medQNine:			.asciiz "\nQuestion #9\nTrue or False: Question.\n>> "
+medQTen:			.asciiz "\nQuestion #10\nQuestion?\nA)Wrong\nB)Wrong\nC)Right\nD)Wrong\n>>  "
+
+medScore:			.asciiz "\nYour score for the Medium section is %"
+medPass:			.asciiz "\nPawsitively stellar! You got a great score! Would you like to advance to the difficult level?\n>>  "
+medFail:			.asciiz "\nWhat an unfurtunate turn of events. Visit the learn section before trying again, maybe!\n>>  "
+
+hardQOne:			.asciiz "\nQuestion #1\nQuestion?\nA)Wrong\nB)Right\nC)Wrong\nD)Wrong\n>>  "
+hardQTwo:			.asciiz "\nQuestion #2\nQuestion?\nA)Right\nB)Wrong\nC)Wrong\nD)Wrong\n>>  "
+hardQThree:			.asciiz "\nQuestion #3\nQuestion?\nA)Wrong\nB)Wrong\nC)Wrong\nD)Right\n>>  "
+hardQFour:			.asciiz "\nQuestion #4\nQuestion?\nA)Wrong\nB)Wrong\nC)Right\nD)Wrong\n>>  "
+hardQFive:			.asciiz "\nQuestion #5\nTrue or False: Question.\n>> "
+hardQSix:			.asciiz "\nQuestion #6\nQuestion?\nA)Right\nB)Wrong\nC)Wrong\nD)Wrong\n>>  "
+hardQSeven:			.asciiz "\nQuestion #7\nQuestion?\nA)Wrong\nB)Right\nC)Wrong\nD)Wrong\n>>  "
+hardQEight:			.asciiz "\nQuestion #8\nQuestion?\nA)Wrong\nB)Wrong\nC)Right\nD)Wrong\n>>  "
+hardQNine:			.asciiz "\nQuestion #9\nQuestion?\nA)Wrong\nB)Wrong\nC)Wrong\nD)Right\n>>  "
+hardQTen:			.asciiz "\nQuestion #10\nTrue or False: Question.\n>> "
+hardQEleven:		.asciiz "\nQuestion #11\nQuestion?\nA)Wrong\nB)Wrong\nC)Wrong\nD)Right\n>>  "
+hardQTwelve:		.asciiz "\nQuestion #12\nQuestion?\nA)Right\nB)Wrong\nC)Wrong\nD)Wrong\n>>  "
+hardQThirteen:		.asciiz "\nQuestion #13\nQuestion?\nA)Right\nB)Wrong\nC)Wrong\nD)Wrong\n>>  "
+hardQFourteen:		.asciiz "\nQuestion #14\nQuestion?\nA)Wrong\nB)Right\nC)Wrong\nD)Wrong\n>>  "
+hardQFifteen:		.asciiz "\nQuestion #15\nTrue or False: Question.\n>> "
+
+hardScore:			.asciiz "\nYour score for the Difficult section is %"
+hardPass:			.asciiz "\nYou must be a cat expurrt! You got a great score!"
+hardFail:			.asciiz "\nConcatulations at making it this far, but you just didn't make the cut. Visit the learn section before trying again, maybe!\n>>  "
+
+expertMode:			.asciiz "\nBecause you're so good at Catechism, you've unlocked the super secret Expert Mode!"
+expQOne:			.asciiz "\nQuestion #1\nQuestion?\nA)Wrong\nB)Right\nC)Wrong\nD)Wrong\n>>  "
+expQTwo:			.asciiz "\nQuestion #2\nQuestion?\nA)Wrong\nB)Wrong\nC)Right\nD)Wrong\n>>  "
+expQThree:			.asciiz "\nQuestion #3\nQuestion?\nA)Right\nB)Wrong\nC)Wrong\nD)Wrong\n>>  "
+expScore:			.asciiz "\nYour score for the Expert section is %"
+expPass:			.asciiz "\nTickle my whiskers and call me a cat! You're the best! GREAT job!"
+expFail:			.asciiz "\nYou made it so fur! Great job!"
+
+bye:				.asciiz "\nThanks for playing Catechism!"
+
+.globl				main
+
+.text
+
+	main:
+
+		li	$s0, 0						#init score
+		li	$s1, 1						#constant; menu num; answer num
+		li	$s2, 2						#constant; menu num; answer num
+		li	$s3, 3						#constant; menu num; answer num
+		li	$s4, 4						#constant; menu num; answer num
+		li	$s5, 5						#constant; counter compare point
+		li	$s6, 6						#constant
+		li	$s7, 7						#constant
+		li	$t0, 8						#constant
+		li	$t1, 9						#constant
+		li	$t2, 10						#constant; counter compare point
+		li	$t3, 11						#constant
+		li	$t4, 12						#constant
+		li	$t5, 13						#constant
+		li	$t6, 14						#constant
+		li	$t7, 15						#constant; counter compare point
+		li	$t8, 0						#question counter
+		li	$t9, 0						#increment counter
+		li	$a3, 0						#decrement counter
+		li	$a1, 100					#constant
+
+	mainMenu:
+
+		li		$v0, 4					#alert to print string
+		la		$a0, logo				#load address of string 'logo'
+		syscall							#execute print
+
+		li		$v0, 4					#alert to print string
+		la		$a0, greeting			#load address of string 'greeting'
+		syscall							#execute print
+
+		li		$v0, 4					#alert to print string
+		la		$a0, selection			#load address of string 'selection'
+		syscall							#execute print
+
+		li		$v0, 5					#alert to read integer
+		syscall							#execute read
+
+		beq		$v0, $s1, lvlSelect		#branch to 'lvlSelect' if value = 1
+		beq		$v0, $s2, learn			#branch to 'learn' if value = 2
+		beq		$v0, $s3, inform		#branch to 'inform' if value = 3
+		beq		$v0, $s4, close			#branch to 'close' if value = 4
+		bgt		$v0, $s4, throwError	#branch to 'throwError' if value > 4
+		blt		$v0, $s1, throwError	#branch to 'throwError' if value < 1
+
+	lvlSelect:
+
+		li		$v0, 4					#alert to print string
+		la		$a0, play				#load address of string 'play'
+		syscall							#execute print
+
+		li		$v0, 5					#alert to read integer
+		syscall							#execute read
+
+		beq		$v0, $s1, eQOne			#branch to 'easy' if value = 1
+		beq		$v0, $s2, mQOne			#branch to 'medium' if value = 2
+		beq		$v0, $s3, dQOne			#branch to 'difficult' if value = 3
+		bgt		$v0, $s3, throwError	#branch to 'throwError' if > 3
+		blt		$v0, $s1, throwError	#branch to 'throwError' if < 1
+
+	inform:
+
+		li		$v0, 4					#alert to print string
+		la		$a0, selection2			#load address of string 'selection2'
+		syscall							#execute print
+
+		li		$v0, 5					#alert to read integer
+		syscall							#execute print
+
+		beq		$v0, $s1, howTo			#branch to 'howTo' if value = 1
+		beq		$v0, $s2, credits		#branch to 'credits' if value = 2
+		bgt		$v0, $s2, throwError	#branch to 'throwError' if > 2
+		blt		$v0, $s1, throwError	#branch to 'throwError' if < 1
+
+	howTo:
+
+		li		$v0, 4					#alert to print string
+		la		$a0, explain			#load address of string 'explain'
+		syscall							#execute print
+
+		b		mainMenu				#branch back to 'mainMenu' when print executed
+
+	credits:
+
+		li		$v0, 4					#alert to print string
+		la		$a0, furtherInformation	#load address of string 'furtherInformation'
+		syscall							#execute print
+
+		b		mainMenu				#branch back to 'mainMenu' when print executed
+
+	learn:								#section contains all answers
+
+	eQOne:
+
+		li		$v0, 4					#alert to print string
+		la		$a0, easyQOne			#load address of string 'easyQOne'
+		syscall							#execute print
+
+		li		$v0, 5					#alert to read integer
+		syscall							#execute read
+
+		beq		$v0, $s4, incrEScore	#if 'D' selected, branch to incrEScore (value = 4)
+		bgt		$v0, $s4, decrEScore	#if 'D' not selected branch to decrEScore (value > 4)
+		blt		$v0, $s4, decrEScore	#if 'D' not selected branch to decrEScore (value < 4)
+
+	eQTwo:
+
+		li		$v0, 4					#alert to print string
+		la		$a0, easyQTwo			#load address of string 'easyQTwo'
+		syscall							#execute print
+
+		li		$v0, 5					#alert to read integer
+		syscall							#execute read
+
+		beq		$v0, $s1, incrEScore	#if 'True' selected, branch to incrEScore (value = 1)
+		bgt		$v0, $s1, decrEScore	#if 'True' not selected branch to decrEScore (value > 1)
+		blt		$v0, $s1, decrEScore	#if 'True' not selected branch to decrEScore (value < 1)
+
+	eQThree:
+
+		li		$v0, 4					#alert to print string
+		la		$a0, easyQThree			#load address of string 'easyQThree'
+		syscall							#execute print
+
+		li		$v0, 5					#alert to read integer
+		syscall							#execute read
+
+		beq		$v0, $s3, incrEScore	#if 'C' selected, branch to incrEScore (value = 3)
+		bgt		$v0, $s3, decrEScore	#if 'C' not selected branch to decrEScore (value > 3)
+		blt		$v0, $s3, decrEScore	#if 'C' not selected branch to decrEScore (value < 3)
+
+	eQFour:
+
+		li		$v0, 4					#alert to print string
+		la		$a0, easyQFour			#load address of string 'easyQFour'
+		syscall							#execute print
+
+		li		$v0, 5					#alert to read integer
+		syscall							#execute read
+
+		beq		$v0, $s2, incrEScore	#if 'False' selected, branch to incrEScore (value = 2)
+		bgt		$v0, $s2, decrEScore	#if 'False' not selected branch to decrEScore (value > 2)
+		blt		$v0, $s2, decrEScore	#if 'False' not selected branch to decrEScore (value < 2)
+
+	eQFive:
+
+		li		$v0, 4					#alert to print string
+		la		$a0, easyQFive			#load address of string 'easyQFive'
+		syscall							#execute print
+
+		li		$v0, 5					#alert to read integer
+		syscall							#execute read
+
+		beq		$v0, $s2, incrEScore	#if 'B' selected, branch to incrEScore (value = 2)
+		bgt		$v0, $s2, decrEScore	#if 'B' not selected branch to decrEScore (value > 2)
+		blt		$v0, $s2, decrEScore	#if 'B' not selected branch to decrEScore (value < 2)
+
+	incrEScore:
+
+		add		$t9, $t9, 1				#increment incr. counter
+		add		$t8, $t8, 1				#increment counter
+		move	$v0, $t8				#move to $v0
+	
+		beq		$v0, $s2, eQTwo			#counter=2, question 2
+		beq		$v0, $s3, eQThree		#counter=3, question 3
+		beq		$v0, $s4, eQFour		#counter=4, question 4
+		beq		$v0, $s5, eQFive		#counter=5, question 5
+		bgt		$v0, $t8, eTally		#counter>5, eTally
+
+	decrEScore:
+
+		add		$a3, $a3, 1				#increment decr. counter
+		add		$t8, $t8, 1				#increment counter
+		move	$v0, $t8				#move to $v0
+
+		beq		$v0, $s2, eQTwo			#counter=2, question 2
+		beq		$v0, $s3, eQThree		#counter=3, question 3
+		beq		$v0, $s4, eQFour		#counter=4, question 4
+		beq		$v0, $s5, eQFive		#counter=5, question 5
+		bgt		$v0, $t8, eTally		#counter>5, eTally
+
+	eTally:
+
+		beq		$t9, $s5, eWin			#if increment counter = 5, branch to Easy Win
+		bltu 	$a3, $s5, eLoss			#if decrement counter < 5, branch to Easy Loss
+
+	eWin:
+		
+		li		$v0, 4					#alert to print string
+		la		$a0, easyScore			#load address of string 'easyScore'
+		syscall							#execute print
+
+		mul		$t9, $t9, 20			#multiply by 20
+
+		li		$v0, 1					#alert to print integer
+		move	$a0, $t9 				#load always to $a0
+		syscall							#execute print
+
+		li		$v0, 4					#alert to print string
+		la		$a0, easyPass			#load address of string 'easyPass'
+		syscall							#execute print
+
+		li		$v0, 5					#alert to read integer
+		syscall							#execute read
+
+		beq		$v0, $s2, mQOne			#branch to medium section if '2' for 'Yes' is the input
+		beq		$v0, $s1, main			#branch to 'mainMenu' if '1' for 'No' is the input
+		bgt		$v0, $s2, throwError	#branch to 'throwError' if input > 2
+		blt		$v0, $s1, throwError	#branch to 'throwError' if input < 1
+
+	eLoss:
+
+		li		$v0, 4					#alert to print string
+		la		$a0, easyScore			#load address of string 'easyScore'
+		syscall							#execute print
+
+		mul		$a3, $a3, 20			#multiply by 20
+
+		li		$v0, 1					#alert to print integer
+		move	$a0, $a3				#load always to $a0
+		syscall							#execute print
+		
+		li		$v0, 4					#alert to print string
+		la		$a0, easyFail			#load address of string 'easyFail'
+		syscall							#execute print
+
+		b		main					#branch to 'mainMenu' when lost
+
+	reInit1:
+
+		li	$s0, 0						#init score
+		li	$s1, 1						#constant; menu num; answer num
+		li	$s2, 2						#constant; menu num; answer num
+		li	$s3, 3						#constant; menu num; answer num
+		li	$s4, 4						#constant; menu num; answer num
+		li	$s5, 5						#constant; counter compare point
+		li	$s6, 6						#constant
+		li	$s7, 7						#constant
+		li	$t0, 8						#constant
+		li	$t1, 9						#constant
+		li	$t2, 10						#constant; counter compare point
+		li	$t3, 11						#constant
+		li	$t4, 12						#constant
+		li	$t5, 13						#constant
+		li	$t6, 14						#constant
+		li	$t7, 15						#constant; counter compare point
+		li	$t8, 0						#question counter
+		li	$t9, 0						#increment counter
+		li	$a3, 0						#decrement counter
+		li	$a1, 100					#constant
+
+	mQOne:
+
+		li		$v0, 4					#alert to print string
+		la		$a0, medQOne			#load address of string 'medQOne'
+		syscall							#execute print
+
+		li		$v0, 5					#alert to read integer
+		syscall							#execute read
+
+		beq		$v0, $s1, incrMScore	#if 'A' selected, branch to incrMScore (value = 1)
+		bgt		$v0, $s1, decrMScore	#if 'A' not selected branch to decrMScore (value > 1)
+		blt		$v0, $s1, decrMScore	#if 'A' not selected branch to decrMScore (value < 1)
+
+	mQTwo:
+
+		li		$v0, 4					#alert to print string
+		la		$a0, medQTwo			#load address of string 'medQTwo'
+		syscall							#execute print
+
+		li		$v0, 5					#alert to read integer
+		syscall							#execute read
+
+		beq		$v0, $s3, incrMScore	#if 'C' selected, branch to incrMScore (value = 3)
+		bgt		$v0, $s3, decrMScore	#if 'C' not selected branch to decrMScore (value > 3)
+		blt		$v0, $s3, decrMScore	#if 'C' not selected branch to decrMScore (value < 3)
+
+	mQThree:
+
+		li		$v0, 4					#alert to print string
+		la		$a0, medQThree			#load address of string 'medQThree'
+		syscall							#execute print
+
+		li		$v0, 5					#alert to read integer
+		syscall							#execute read
+
+		beq		$v0, $s1, incrMScore	#if 'True' selected, branch to incrMScore (value = 1)
+		bgt		$v0, $s1, decrMScore	#if 'True' not selected branch to decrMScore (value > 1)
+		blt		$v0, $s1, decrMScore	#if 'True' not selected branch to decrMScore (value < 1)
+
+	mQFour:
+
+		li		$v0, 4					#alert to print string
+		la		$a0, medQFour			#load address of string 'medQFour'
+		syscall							#execute print
+
+		li		$v0, 5					#alert to read integer
+		syscall							#execute read
+
+		beq		$v0, $s2, incrMScore	#if 'B' selected, branch to incrMScore (value = 2)
+		bgt		$v0, $s2, decrMScore	#if 'B' not selected branch to decrMScore (value > 2)
+		blt		$v0, $s2, decrMScore	#if 'B' not selected branch to decrMScore (value < 2)
+
+	mQFive:
+
+		li		$v0, 4					#alert to print string
+		la		$a0, medQFive			#load address of string 'medQFive'
+		syscall							#execute print
+
+		li		$v0, 5					#alert to read integer
+		syscall							#execute read
+
+		beq		$v0, $s2, incrMScore	#if 'B' selected, branch to incrMScore (value = 2)
+		bgt		$v0, $s2, decrMScore	#if 'B' not selected branch to decrMScore (value > 2)
+		blt		$v0, $s2, decrMScore	#if 'B' not selected branch to decrMScore (value < 2)
+
+	mQSix:
+
+		li		$v0, 4					#alert to print string
+		la		$a0, medQSix			#load address of string 'medQSix'
+		syscall							#execute print
+
+		li		$v0, 5					#alert to read integer
+		syscall							#execute read
+
+		beq		$v0, $s2, incrMScore	#if 'False' selected, branch to incrMScore (value = 2)
+		bgt		$v0, $s2, decrMScore	#if 'False' not selected branch to decrMScore (value > 2)
+		blt		$v0, $s2, decrMScore	#if 'False' not selected branch to decrMScore (value < 2)
+
+	mQSeven:
+
+		li		$v0, 4					#alert to print string
+		la		$a0, medQSeven			#load address of string 'medQSeven'
+		syscall							#execute print
+
+		li		$v0, 5					#alert to read integer
+		syscall							#execute read
+
+		beq		$v0, $s1, incrMScore	#if 'A' selected, branch to incrMScore (value = 1)
+		bgt		$v0, $s1, decrMScore	#if 'A' not selected branch to decrMScore (value > 1)
+		blt		$v0, $s1, decrMScore	#if 'A' not selected branch to decrMScore (value < 1)
+
+	mQEight:
+
+		li		$v0, 4					#alert to print string
+		la		$a0, medQEight			#load address of string 'medQEight'
+		syscall							#execute print
+
+		li		$v0, 5					#alert to read integer
+		syscall							#execute read
+
+		beq		$v0, $s4, incrMScore	#if 'D' selected, branch to incrMScore (value = 4)
+		bgt		$v0, $s4, decrMScore	#if 'D' not selected branch to decrMScore (value > 4)
+		blt		$v0, $s4, decrMScore	#if 'D' not selected branch to decrMScore (value < 4)
+
+	mQNine:
+
+		li		$v0, 4					#alert to print string
+		la		$a0, medQNine			#load address of string 'medQNine'
+		syscall							#execute print
+
+		li		$v0, 5					#alert to read integer
+		syscall							#execute read
+
+		beq		$v0, $s2, incrMScore	#if 'False' selected, branch to incrMScore (value = 2)
+		bgt		$v0, $s2, decrMScore	#if 'False' not selected branch to decrMScore (value > 2)
+		blt		$v0, $s2, decrMScore	#if 'False' not selected branch to decrMScore (value < 2)
+
+	mQTen:
+
+		li		$v0, 4					#alert to print string
+		la		$a0, medQTen			#load address of string 'medQTen'
+		syscall							#execute print
+
+		li		$v0, 5					#alert to read integer
+		syscall							#execute read
+
+		beq		$v0, $s3, incrMScore	#if 'C' selected, branch to incrMScore (value = 3)
+		bgt		$v0, $s3, decrMScore	#if 'C' not selected branch to decrMScore (value > 3)
+		blt		$v0, $s3, decrMScore	#if 'C' not selected branch to decrMScore (value < 3)
+
+	incrMScore:
+
+		add		$t9, $t9, 1				#increment incr. counter
+		add		$t8, $t8, 1				#increment counter
+		move	$v0, $t8				#move to $v0
+	
+		beq		$v0, $s2, mQTwo			#counter=2, question 2
+		beq		$v0, $s3, mQThree		#counter=3, question 3
+		beq		$v0, $s4, mQFour		#counter=4, question 4
+		beq		$v0, $s5, mQFive		#counter=5, question 5
+		beq		$v0, $s6, mQSix			#counter=6, question 6
+		beq		$v0, $s7, mQSeven		#counter=7, question 7
+		beq		$v0, $t0, mQEight		#counter=8, question 8
+		beq		$v0, $t1, mQNine		#counter=9, question 9
+		beq		$v0, $t2, mQTen			#counter=10, question 10
+		bgt		$v0, $t2, eTally		#counter>10, eTally
+
+	decrMScore:
+
+		add		$a3, $a3, 1				#increment decr. counter
+		add		$t8, $t8, 1				#increment counter
+		move	$v0, $t8				#move to $v0
+
+		beq		$v0, $s2, mQTwo			#counter=2, question 2
+		beq		$v0, $s3, mQThree		#counter=3, question 3
+		beq		$v0, $s4, mQFour		#counter=4, question 4
+		beq		$v0, $s5, mQFive		#counter=5, question 5
+		beq		$v0, $s6, mQSix			#counter=6, question 6
+		beq		$v0, $s7, mQSeven		#counter=7, question 7
+		beq		$v0, $t0, mQEight		#counter=8, question 8
+		beq		$v0, $t1, mQNine		#counter=9, question 9
+		beq		$v0, $t2, mQTen			#counter=10, question 10
+		bgt		$v0, $t2, eTally		#counter>10, eTally
+
+	mTally:
+
+		bgeu	$t9, $s5, mWin			#if counter >=5, branch to Medium Win
+		bgtu	$a3, $s5, mLoss			#if counter >5, branch to Medium Loss
+
+	mWin:
+
+		li		$v0, 4					#alert to print string
+		la		$a0, medScore			#load address of string 'medScore'
+		syscall							#execute print
+
+		mul		$t9, $t9, $t2			#multiply counter by 10 to get score
+
+		li		$v0, 1					#alert to print integer
+		move	$a0, $t9				#load always to $a0
+		syscall							#execute print
+
+		li		$v0, 4					#alert to print string
+		la		$a0, medPass			#load address of string 'medPass'
+		syscall							#execute print
+
+		li		$v0, 5					#alert to read integer
+		syscall							#execute read
+
+		beq		$v0, $s2, dQOne			#branch to difficult section if '2' for 'Yes' is the input
+		beq		$v0, $s1, main			#branch to 'mainMenu' if '1' for 'No' is the input
+		bgt		$v0, $s2, throwError	#branch to 'throwError' if input > 2
+		blt		$v0, $s1, throwError	#branch to 'throwError' if input < 1
+
+	mLoss:
+
+		li		$v0, 4					#alert to print string
+		la		$a0, medScore			#load address of string 'medScore'
+		syscall							#execute print
+
+		li		$v0, 1					#alert to print integer
+		move	$a0, $s0				#load always to $a0
+		syscall							#execute print
+		
+		li		$v0, 4					#alert to print string
+		la		$a0, medFail			#load address of string 'medFail'
+		syscall							#execute print
+
+		b		main					#branch to 'mainMenu' when lost
+
+	reInit2:
+
+		li	$s0, 0						#init score
+		li	$s1, 1						#constant; menu num; answer num
+		li	$s2, 2						#constant; menu num; answer num
+		li	$s3, 3						#constant; menu num; answer num
+		li	$s4, 4						#constant; menu num; answer num
+		li	$s5, 5						#constant; counter compare point
+		li	$s6, 6						#constant
+		li	$s7, 7						#constant
+		li	$t0, 8						#constant
+		li	$t1, 9						#constant
+		li	$t2, 10						#constant; counter compare point
+		li	$t3, 11						#constant
+		li	$t4, 12						#constant
+		li	$t5, 13						#constant
+		li	$t6, 14						#constant
+		li	$t7, 15						#constant; counter compare point
+		li	$t8, 0						#question counter
+		li	$t9, 0						#increment counter
+		li	$a3, 0						#decrement counter
+		li	$a1, 100					#constant
+
+	dQOne:
+
+		li		$v0, 4					#alert to print string
+		la		$a0, hardQOne			#load address of string 'hardQOne'
+		syscall							#execute print
+
+		li		$v0, 5					#alert to read integer
+		syscall							#execute read
+
+		beq		$v0, $s2, incrDScore	#if 'B' selected, branch to incrDScore (value = 2)
+		bgt		$v0, $s2, decrDScore	#if 'B' not selected branch to decrDScore (value > 2)
+		blt		$v0, $s2, decrDScore	#if 'B' not selected branch to decrDScore (value < 2)
+
+	dQTwo:
+
+		li		$v0, 4					#alert to print string
+		la		$a0, hardQTwo			#load address of string 'hardQTwo'
+		syscall							#execute print
+
+		li		$v0, 5					#alert to read integer
+		syscall							#execute read
+
+		beq		$v0, $s1, incrDScore	#if 'A' selected, branch to incrDScore (value = 1)
+		bgt		$v0, $s1, decrDScore	#if 'A' not selected branch to decrDScore (value > 1)
+		blt		$v0, $s1, decrDScore	#if 'A' not selected branch to decrDScore (value < 1)
+
+	dQThree:
+
+		li		$v0, 4					#alert to print string
+		la		$a0, hardQThree			#load address of string 'hardQThree'
+		syscall							#execute print
+
+		li		$v0, 5					#alert to read integer
+		syscall							#execute read
+
+		beq		$v0, $s4, incrDScore	#if 'D' selected, branch to incrDScore (value = 4)
+		bgt		$v0, $s4, decrDScore	#if 'D' not selected branch to decrDScore (value > 4)
+		blt		$v0, $s4, decrDScore	#if 'D' not selected branch to decrDScore (value < 4)
+
+	dQFour:
+
+		li		$v0, 4					#alert to print string
+		la		$a0, hardQFour			#load address of string 'hardQFour'
+		syscall							#execute print
+
+		li		$v0, 5					#alert to read integer
+		syscall							#execute read
+
+		beq		$v0, $s3, incrDScore	#if 'C' selected, branch to incrDScore (value = 3)
+		bgt		$v0, $s3, decrDScore	#if 'C' not selected branch to decrDScore (value > 3)
+		blt		$v0, $s3, decrDScore	#if 'C' not selected branch to decrDScore (value < 3)
+
+	dQFive:
+
+		li		$v0, 4					#alert to print string
+		la		$a0, hardQFive			#load address of string 'hardQFive'
+		syscall							#execute print
+
+		li		$v0, 5					#alert to read integer
+		syscall							#execute read
+
+		beq		$v0, $s2, incrDScore	#if 'False' selected, branch to incrDScore (value = 2)
+		bgt		$v0, $s2, decrDScore	#if 'False' not selected branch to decrDScore (value > 2)
+		blt		$v0, $s2, decrDScore	#if 'False' not selected branch to decrDScore (value < 2)
+
+	dQSix:
+
+		li		$v0, 4					#alert to print string
+		la		$a0, hardQSix			#load address of string 'hardQSix'
+		syscall							#execute print
+
+		li		$v0, 5					#alert to read integer
+		syscall							#execute read
+
+		beq		$v0, $s1, incrDScore	#if 'A' selected, branch to incrDScore (value = 1)
+		bgt		$v0, $s1, decrDScore	#if 'A' not selected branch to decrDScore (value > 1)
+		blt		$v0, $s1, decrDScore	#if 'A' not selected branch to decrDScore (value < 1)
+
+	dQSeven:
+
+		li		$v0, 4					#alert to print string
+		la		$a0, hardQSeven			#load address of string 'hardQSeven'
+		syscall							#execute print
+
+		li		$v0, 5					#alert to read integer
+		syscall							#execute read
+
+		beq		$v0, $s2, incrDScore	#if 'B' selected, branch to incrDScore (value = 2)
+		bgt		$v0, $s2, decrDScore	#if 'B' not selected branch to decrDScore (value > 2)
+		blt		$v0, $s2, decrDScore	#if 'B' not selected branch to decrDScore (value < 2)
+
+	dQEight:
+
+		li		$v0, 4					#alert to print string
+		la		$a0, hardQEight			#load address of string 'hardQEight'
+		syscall							#execute print
+
+		li		$v0, 5					#alert to read integer
+		syscall							#execute read
+
+		beq		$v0, $s3, incrDScore	#if 'C' selected, branch to incrDScore (value = 3)
+		bgt		$v0, $s3, decrDScore	#if 'C' not selected branch to decrDScore (value > 3)
+		blt		$v0, $s3, decrDScore	#if 'C' not selected branch to decrDScore (value < 3)
+
+	dQNine:
+
+		li		$v0, 4					#alert to print string
+		la		$a0, hardQNine			#load address of string 'hardQNine'
+		syscall							#execute print
+
+		li		$v0, 5					#alert to read integer
+		syscall							#execute read
+
+		beq		$v0, $s4, incrDScore	#if 'D' selected, branch to incrDScore (value = 4)
+		bgt		$v0, $s4, decrDScore	#if 'D' not selected branch to decrDScore (value > 4)
+		blt		$v0, $s4, decrDScore	#if 'D' not selected branch to decrDScore (value < 4)
+
+	dQTen:
+
+		li		$v0, 4					#alert to print string
+		la		$a0, hardQTen			#load address of string 'hardQTen'
+		syscall							#execute print
+
+		li		$v0, 5					#alert to read integer
+		syscall							#execute read
+
+		beq		$v0, $s1, incrDScore	#if 'True' selected, branch to incrDScore (value = 1)
+		bgt		$v0, $s1, decrDScore	#if 'True' not selected branch to decrDScore (value > 1)
+		blt		$v0, $s1, decrDScore	#if 'True' not selected branch to decrDScore (value < 1)
+
+	dQEleven:
+
+		li		$v0, 4					#alert to print string
+		la		$a0, hardQEleven		#load address of string 'hardQEleven'
+		syscall							#execute print
+
+		li		$v0, 5					#alert to read integer
+		syscall							#execute read
+
+		beq		$v0, $s4, incrDScore	#if 'D' selected, branch to incrDScore (value = 4)
+		bgt		$v0, $s4, decrDScore	#if 'D' not selected branch to decrDScore (value > 4)
+		blt		$v0, $s4, decrDScore	#if 'D' not selected branch to decrDScore (value < 4)
+
+	dQTwelve:
+
+		li		$v0, 4					#alert to print string
+		la		$a0, hardQTwelve		#load address of string 'hardQTwelve'
+		syscall							#execute print
+
+		li		$v0, 5					#alert to read integer
+		syscall							#execute read
+
+		beq		$v0, $s1, incrDScore	#if 'A' selected, branch to incrDScore (value = 1)
+		bgt		$v0, $s1, decrDScore	#if 'A' not selected branch to decrDScore (value > 1)
+		blt		$v0, $s1, decrDScore	#if 'A' not selected branch to decrDScore (value < 1)
+
+	dQThirteen:
+
+		li		$v0, 4					#alert to print string
+		la		$a0, hardQThirteen		#load address of string 'hardQThirteen'
+		syscall							#execute print
+
+		li		$v0, 5					#alert to read integer
+		syscall							#execute read
+
+		beq		$v0, $s1, incrDScore	#if 'A' selected, branch to incrDScore (value = 1)
+		bgt		$v0, $s1, decrDScore	#if 'A' not selected branch to decrDScore (value > 1)
+		blt		$v0, $s1, decrDScore	#if 'A' not selected branch to decrDScore (value < 1)
+
+	dQFourteen:
+
+		li		$v0, 4					#alert to print string
+		la		$a0, hardQFourteen		#load address of string 'hardQFourteen'
+		syscall							#execute print
+
+		li		$v0, 5					#alert to read integer
+		syscall							#execute read
+
+		beq		$v0, $s2, incrDScore	#if 'B' selected, branch to incrDScore (value = 2)
+		bgt		$v0, $s2, decrDScore	#if 'B' not selected branch to decrDScore (value > 2)
+		blt		$v0, $s2, decrDScore	#if 'B' not selected branch to decrDScore (value < 2)
+
+	dQFifteen:
+
+		li		$v0, 4					#alert to print string
+		la		$a0, hardQFifteen		#load address of string 'hardQFifteen'
+		syscall							#execute print
+
+		li		$v0, 5					#alert to read integer
+		syscall							#execute read
+
+		beq		$v0, $s2, incrDScore	#if 'False' selected, branch to incrDScore (value = 2)
+		bgt		$v0, $s2, decrDScore	#if 'False' not selected branch to decrDScore (value > 2)
+		blt		$v0, $s2, decrDScore	#if 'False' not selected branch to decrDScore (value < 2)
+
+	incrDScore:
+		
+		add		$t9, $t9, 1				#increment incr. counter
+		add		$t8, $t8, 1				#increment counter
+		move	$v0, $t8				#move to $v0
+	
+		beq		$v0, $s2, dQTwo			#counter=2, question 2
+		beq		$v0, $s3, dQThree		#counter=3, question 3
+		beq		$v0, $s4, dQFour		#counter=4, question 4
+		beq		$v0, $s5, dQFive		#counter=5, question 5
+		beq		$v0, $s6, dQSix			#counter=6, question 6
+		beq		$v0, $s7, dQSeven		#counter=7, question 7
+		beq		$v0, $t0, dQEight		#counter=8, question 8
+		beq		$v0, $t1, dQNine		#counter=9, question 9
+		beq		$v0, $t2, dQTen			#counter=10, question 10
+		beq		$v0, $t3, dQEleven		#counter=11, question 11
+		beq		$v0, $t4, dQTwelve		#counter=12, question 12
+		beq		$v0, $t5, dQThirteen	#counter=13, question 13
+		beq		$v0, $t6, dQFourteen	#counter=14, question 14
+		beq		$v0, $t7, dQFifteen		#counter=15, question 15
+		bgt		$v0, $t7, eTally		#counter>15, eTally
+
+	decrDScore:
+
+		add		$a3, $a3, 1				#increment decr. counter
+		add		$t8, $t8, 1				#increment counter
+		move	$v0, $t8				#move to $v0
+
+		beq		$v0, $s2, dQTwo			#counter=2, question 2
+		beq		$v0, $s3, dQThree		#counter=3, question 3
+		beq		$v0, $s4, dQFour		#counter=4, question 4
+		beq		$v0, $s5, dQFive		#counter=5, question 5
+		beq		$v0, $s6, dQSix			#counter=6, question 6
+		beq		$v0, $s7, dQSeven		#counter=7, question 7
+		beq		$v0, $t0, dQEight		#counter=8, question 8
+		beq		$v0, $t1, dQNine		#counter=9, question 9
+		beq		$v0, $t2, dQTen			#counter=10, question 10
+		beq		$v0, $t3, dQEleven		#counter=11, question 11
+		beq		$v0, $t4, dQTwelve		#counter=12, question 12
+		beq		$v0, $t5, dQThirteen	#counter=13, question 13
+		beq		$v0, $t6, dQFourteen	#counter=14, question 14
+		beq		$v0, $t7, dQFifteen		#counter=15, question 15
+		bgt		$v0, $t7, eTally		#counter>15, eTally
+
+	dTally:
+
+		bgeu	$t9, $t5, dWin			#if increment counter >= 13, branch to Difficult Win
+		bgtu		$a3, $s2, dLoss			#if decrement counter > 2, branch to Difficult Loss
+
+	dWin:
+
+		li		$v0, 4					#alert to print string
+		la		$a0, hardScore			#load address of string 'hardScore'
+		syscall							#execute print
+
+		div		$t9, $t9, $t7			#divide incr. counter by 15
+		mul		$t9, $t9, $a1			#multiply by 100
+
+		li		$v0, 1					#alert to print integer
+		move	$a0, $t9				#load always to $a0
+		syscall							#execute print
+
+		li		$v0, 4					#alert to print string
+		la		$a0, hardPass			#load address of string 'hardPass'
+		syscall							#execute print
+
+		li		$v0, 5					#alert to read integer
+		syscall							#execute read
+
+		beq		$v0, $s2, xQOne			#branch to expert section if '2' for 'Yes' is the input
+		beq		$v0, $s1, main			#branch to 'mainMenu' if '1' for 'No' is the input
+		bgt		$v0, $s2, throwError	#branch to 'throwError' if input > 2
+		blt		$v0, $s1, throwError	#branch to 'throwError' if input < 1
+
+	dLoss:
+
+		li		$v0, 4					#alert to print string
+		la		$a0, hardScore			#load address of string 'hardScore'
+		syscall							#execute print
+
+		div		$a3, $a3, $t7			#divide decr. counter by 15
+		mul		$a3, $a3, $a1			#multiply by 100
+
+		li		$v0, 1					#alert to print integer
+		move	$a0, $a3				#load always to $a0
+		syscall							#execute print
+		
+		li		$v0, 4					#alert to print string
+		la		$a0, hardFail			#load address of string 'hardFail'
+		syscall							#execute print
+
+		b		main					#branch to 'mainMenu' when lost
+
+	reInit3:
+
+		li	$s0, 0						#init score
+		li	$s1, 1						#constant; menu num; answer num
+		li	$s2, 2						#constant; menu num; answer num
+		li	$s3, 3						#constant; menu num; answer num
+		li	$s4, 4						#constant; menu num; answer num
+		li	$s5, 5						#constant; counter compare point
+		li	$s6, 6						#constant
+		li	$s7, 7						#constant
+		li	$t0, 8						#constant
+		li	$t1, 9						#constant
+		li	$t2, 10						#constant; counter compare point
+		li	$t3, 11						#constant
+		li	$t4, 12						#constant
+		li	$t5, 13						#constant
+		li	$t6, 14						#constant
+		li	$t7, 15						#constant; counter compare point
+		li	$t8, 0						#question counter
+		li	$t9, 0						#increment counter
+		li	$a3, 0						#decrement counter
+		li	$a1, 100					#constant
+
+	xQOne:
+
+		li		$v0, 4					#alert to print string
+		la		$a0, expQOne			#load address of string 'expQOne'
+		syscall							#execute print
+
+		li		$v0, 5					#alert to read integer
+		syscall							#execute read
+
+		beq		$v0, $s2, incrXScore	#if 'B' selected, branch to incrXScore (value = 2)
+		bgt		$v0, $s2, decrXScore	#if 'B' not selected branch to decrXScore (value > 2)
+		blt		$v0, $s2, decrXScore	#if 'B' not selected branch to decrXScore (value < 2)
+
+	xQTwo:
+
+		li		$v0, 4					#alert to print string
+		la		$a0, expQTwo			#load address of string 'expQTwo'
+		syscall							#execute print
+
+		li		$v0, 5					#alert to read integer
+		syscall							#execute read
+
+		beq		$v0, $s3, incrXScore	#if 'C' selected, branch to incrXScore (value = 3)
+		bgt		$v0, $s3, decrXScore	#if 'C' not selected branch to decrXScore (value > 3)
+		blt		$v0, $s3, decrXScore	#if 'C' not selected branch to decrXScore (value < 3)
+
+	xQThree:
+
+		li		$v0, 4					#alert to print string
+		la		$a0, expQThree			#load address of string 'expQThree'
+		syscall							#execute print
+
+		li		$v0, 5					#alert to read integer
+		syscall							#execute read
+
+		beq		$v0, $s1, incrXScore	#if 'A' selected, branch to incrXScore (value = 1)
+		bgt		$v0, $s1, decrXScore	#if 'A' not selected branch to decrXScore (value > 1)
+		blt		$v0, $s1, decrXScore	#if 'A' not selected branch to decrXScore (value < 1)
+
+	incrXScore:
+			
+		add		$t9, $t9, 1				#increment incr. counter
+		add		$t8, $t8, 1				#increment counter
+		move	$v0, $t8				#move to $v0
+	
+		beq		$v0, $s2, xQTwo			#counter=2, question 2
+		beq		$v0, $s3, xQThree		#counter=3, question 3
+		bgt		$v0, $s3, eTally		#counter>3, eTally
+
+	decrXScore:
+
+		add		$a3, $a3, 1				#increment decr. counter
+		add		$t8, $t8, 1				#increment counter
+		move	$v0, $t8				#move to $v0
+	
+		beq		$v0, $s2, xQTwo			#counter=2, question 2
+		beq		$v0, $s3, xQThree		#counter=3, question 3
+		bgt		$v0, $s3, eTally		#counter>3, eTally
+
+	xTally:
+
+		beq		$t9, $s3, xWin			#if increment counter = 3, branch to Expert Win
+		bleu	$a3, $s2, xLoss			#if decrement counter <= 2, branch to Expert Loss
+
+	xWin:
+
+		li		$v0, 4					#alert to print string
+		la		$a0, expScore			#load address of string 'expScore'
+		syscall							#execute print
+
+		div		$t9, $t9, $s3			#divide counter by 3
+		mul		$t9, $t9, $a1			#multiply by 100
+
+		li		$v0, 1					#alert to print integer
+		move	$a0, $t9				#load always to $a0
+		syscall							#execute print
+
+		li		$v0, 4					#alert to print string
+		la		$a0, expPass			#load address of string 'expPass'
+		syscall							#execute print
+
+		b		main					#branch to 'mainMenu' when lost
+
+	xLoss:
+
+		li		$v0, 4					#alert to print string
+		la		$a0, expScore			#load address of string 'expScore'
+		syscall							#execute print
+
+		div		$a3, $a3, $s3			#divide counter by 3
+		mul		$a3, $a3, $a1			#multiply by 100
+
+		li		$v0, 1					#alert to print integer
+		move	$a0, $s0				#load always to $a0
+		syscall							#execute print
+		
+		li		$v0, 4					#alert to print string
+		la		$a0, expFail			#load address of string 'expFail'
+		syscall							#execute print
+
+		b		main					#branch to 'mainMenu' when lost
+
+	throwError:
+
+		li		$v0, 4					#alert to print string
+		la		$a0, noSelect			#load address of string 'noSelect'
+		syscall							#execute print
+
+		b		main
+
+	close:
+
+		li		$v0, 4					#alert to print string
+		la		$a0, bye				#load address of string 'bye'
+		syscall							#execute print
+
+		li		$v0, 10					#alert to exit
+		syscall							#execute program end
