@@ -1,13 +1,25 @@
 .data
 
-logo:				.asciiz "\n    ?     ?\n   ? ?   ? ?\n  ?   ???   ?\n ?           ?\n?   ?     ?   ?  \n ?           ?  ?? ?? ? ?? ?? ?? ? ?? ???\n  ???????????   ?  ?? ? ?  ?  ?? ? ?? ? ?\n   ?????????    ?? ?? ? ?? ?? ?? ? ?? ? ?"
+logo:				.asciiz "\n   /\_____/\\n  /         \\n /  0     0  \\n \           /\n  \         /\n   |       |\n  /         \\n |    | |    |     _____   _____  _______  ______   _____          _______   ____    __   __\n |    | |    |    /     \ |     |    |    |        /     \ |     |    |     /    \  |  \_/  |\n/  \  | |  /  \  |        |     |    |    |       |        |     |    |    |_____   |   |   |\n|   | | | |   |  |        |_____|    |    |____   |        |_____|    |          \  |       |\n|   | | | |   |  |        |     |    |    |       |        |     |    |           | |       |\n |  | |_| |  |    \_____/ |     |    |    |______  \_____/ |     | ___|___  \____/  |       |\n  \_(_) (_)_/\n"
 greeting:			.asciiz "\nWelcome to Catechism, the trivia game about cats!" 
 selection:			.asciiz "\nMake a selection below:\n1) Play\n2) Learn\n3) Information\n4) Exit\n>>  "
 play:				.asciiz "\nLevel difficulty:\n1) Easy\n2) Medium\n3) Difficult\n>>  "
 noSelect:			.asciiz "\nNot a valid selection. Please try again."
+askReturn:			.asciiz "\nReturn to main menu?\n>>  "
 selection2:			.asciiz "\n1) How to play 'Catechism'\n2) Credits\n>>  "
-explain:			.asciiz "\n1 | For True or False questions, make your answer by entering 1 for False and 2 for True.\n2 | For multiple choice questions, enter a number 1-4 for the corresponding answer. 1=A, 2=B, 3=C, 4=D, etc.\n3 | If you make an error do not use backspace; backspace is not function in ASM. Simply type the correct response. The compiler will read this response; not the incorrect one.\n4 | All yes or no questions are answered with 1 for yes and 2 for no.\n"
-furtherInformation:	.asciiz "\nCoded using MIPS architecture assembly machine language.\nProgrammed in Visual Studio (various versions, 2012+) and Notepad++.\nTested and compiled using PCSpim.\nCreated for CSC 2200 Methodist University Spring 2015 Final project.\nDistributed for free use at [dropbox link]\nMade by Kasie Leigh Clark 03/24/2015-00/00/2015\nThanks for playing.\n"
+explain:			.asciiz "\n1 | For True or False questions, make your answer by entering 1 for True and 2 for False.\n2 | For multiple choice questions, enter a number 1-4 for the corresponding answer. 1=A, 2=B, 3=C, 4=D, etc.\n3 | If you make an error do not use backspace; backspace is not functional in ASM. Hit space then type the correct response. The compiler will read this response; not the incorrect one.\n4 | All yes or no questions are answered with 1 for yes and 2 for no.\n5 | Entering a number other than 1 or 2 for a T/F question will cause an error in your score. Take care.\n"
+furtherInformation:	.asciiz "\nCoded using MIPS architecture assembly machine language.\nProgrammed in Visual Studio (various versions, 2012+) and Notepad++.\nTested and compiled using PCSpim.\nCreated for CSC 2200 Methodist University Spring 2015 Final project.\nDistributed for free use at [dropbox link]\nMade by Kasie Leigh Clark 03/24/2015-04/21/2015\nThanks for playing.\n"
+
+selection3:			.asciiz "\nSelect which level you would like to learn for:\n1) Easy\n2) Medium\n3) Difficult\n4) Expert\n>>  "
+eLearnAccess:		.asciiz "\nPlease enter the access code:\n>>  "
+mLearnAccess:		.asciiz "\nPlease enter the access code:\n>>  "
+dLearnAccess:		.asciiz "\nPlease enter the access code:\n>>  "
+xLearnAccess:		.asciiz "\nPlease enter the access code:\n>>  "
+
+easyInfo:			.asciiz "\nCat's make many sounds, such as meows, mews, and purring.\nMeow Mix is a well known brand of cat food with a catchy theme song.\nCats predate on mice.\nWhile cats are omnivores, they need meat to survive.\nTom from 'Tom and Jerry', Sylvester from 'Looney Toons', and Tigger from 'Winnie the Pooh' are all famous cartoon cats.\n"
+mediumInfo:			.asciiz "\nCat's use meows to communicate with humans, but hisses, spits, and purring to communicate with one another.\nThey use their whiskers to detect if they can fit through a space; if their whiskers bend, they cannot. Additionally, the average number of whiskers on either side of a cat's face is 12.\nThere are currently 41 recognized breeds of cat in the world, though there are far many mixed and crossbreeds. The three most popular breeds, in descending order, are the Persian, the Maine Coon, and the Siamese.\nLike a human fingerprint, a cats nose has a unique print.\nThe only body parts from which a cat can sweat are the paws.\nWhile almost all cats are capable of purring, only big cats can roar.\nA female cat is known as both a Queen and a Molly.\n"
+difficultInfo:		.asciiz "\nA group of adult cats is known as a clowder, and a group of kittens is known as a kindle.\nThe dominant paw in female cats is the right, while in the male it is the left paw.\nCats can survive on salt water in times of drought.\nCats best sense is hearing.\nThe oldest breed of cat is the Egyptian Mau.\nCheetahs  do not sheath their claws at rest.\nMachairodontinae is the subfamily to which saber-toothed cats belong.\nClouded Leopards are under a Vulnerable conservation status.\nDomestic cats belong to the family Felidae.\nTurkish Van's have a coat better suited to water, and thus are not put off by water or getting wet.\nThe U.S. population of feral cats numbers in the range of 25 to 60 Million.\nDomestic cats can run at approximately 30 miles per hour.\nCats are digitigrade animals, like dogs.\nDomestic cats cannot make the sound known as a 'wah-wah'; only big cats can.\n"
+expertInfo:			.asciiz "\nPolydactylism is a condition in cats in which they can have more than the standard 18 toes. Also known as Hemingway cats.\nProailurus is an extinct genus known as the earliest ancestor of the modern cat.\nFemale cats are polyestrous superfecund- meaning they can have multiple estrous cycles, or 'heats', in a year and are capable of having ovum fertilized by separate fathers.\n"
 
 easyQOne:			.asciiz "\nQuestion #1\nWhat sound does a cat make?\nA) Mew\nB) Meow\nC) Purr\nD) All of the above\n>>  "
 easyQTwo:			.asciiz "\nQuestion #2\nTrue or False: Meow Mix is a well known brand of Cat Food with a jaunty tune that goes like so: 'Meow Meow Meow Meow / Meow Meow Meow Meow / Meow-Meow Meow Meow / Meow M-Meow Meow Meow'\n>>  "
@@ -17,56 +29,63 @@ easyQFive:			.asciiz "\nQuestion #5\nWhich is not a famous cartoon cat?\nA) Tom\
 
 easyScore:			.asciiz "\nYour score for the Easy section is %"
 easyPass:			.asciiz "\nMe-WOW! You got a great score! Would you like to advance to the medium level?\n>>  "
-easyFail:			.asciiz "\nNot pawful, but not great either. Visit the learn section before trying again, maybe!\n>>  "
+easyFail:			.asciiz "\nNot pawful, but not great either. Visit the learn section before trying again, maybe!\n Learn Section Code: 5\n"
 
-medQOne:			.asciiz "\nQuestion #1\nQuestion?\nA)Right\nB)Wrong\nC)Wrong\nD)Wrong\n>>  "
-medQTwo:			.asciiz "\nQuestion #2\nQuestion?\nA)Wrong\nB)Wrong\nC)Right\nD)Wrong\n>>  "
-medQThree:			.asciiz "\nQuestion #3\nTrue or False: Question.\n>> "
-medQFour:			.asciiz "\nQuestion #4\nQuestion?\nA)Wrong\nB)Right\nC)Wrong\nD)Wrong\n>>  "
-medQFive:			.asciiz "\nQuestion #5\nQuestion?\nAWrong)\nB)Right\nC)Wrong\nD)Wrong\n>>  "
-medQSix:			.asciiz "\nQuestion #6\nTrue or False: Question.\n>> "
-medQSeven:			.asciiz "\nQuestion #7\nQuestion?\nA)Right\nB)Wrong\nC)Wrong\nD)Wrong\n>>  "
-medQEight:			.asciiz "\nQuestion #8\nQuestion?\nA)Wrong\nB)Wrong\nC)Wrong\nD)Right\n>>  "
-medQNine:			.asciiz "\nQuestion #9\nTrue or False: Question.\n>> "
-medQTen:			.asciiz "\nQuestion #10\nQuestion?\nA)Wrong\nB)Wrong\nC)Right\nD)Wrong\n>>  "
+medQOne:			.asciiz "\nQuestion #1\nWhat sound(s) do cats use to communicate with humans?\nA) Meow\nB) Hiss\nC) Spit\nD) Purr\n>>  "
+medQTwo:			.asciiz "\nQuestion #2\nWhat sound(s) do cats use to communicate with other cats?\nA) Hiss\nB) Spit\nC) Purr\nD) All of the above\n>>  "
+medQThree:			.asciiz "\nQuestion #3\nTrue or False: Cats use their whiskers to detect if they can fit through a space.\n>> "
+medQFour:			.asciiz "\nQuestion #4\nThese are the top three most popular pedigree cat breeds, in order.\nA) American Shorthair, Persian, Tabby\nB) Persian, Maine Coon, Siamese\nC) Siamese, Burmese, Oriental Shorthair\nD) None of these\n>>  "
+medQFive:			.asciiz "\nQuestion #5\nWhat is the average number of whiskers on each side of a cat's face?\nA) 4\nB) 12\nC) 20\nD) 18\n>>  "
+medQSix:			.asciiz "\nQuestion #6\nTrue or False: The number of recognized cat breeds in the world is over 100.\n>> "
+medQSeven:			.asciiz "\nQuestion #7\nThis body part is similar to a fingerprint in humans.\nA) Nose\nB) Toe pads\nC) Tongue\nD) Tail\n>>  "
+medQEight:			.asciiz "\nQuestion #8\nThis is the only location on a cats body from which it can sweat.\nA) Eyelids\nB) Hindlegs\nC) Ears\nD) Paws\n>>  "
+medQNine:			.asciiz "\nQuestion #9\nTrue or False: All cats are capable of roaring.\n>> "
+medQTen:			.asciiz "\nQuestion #10\nWhat is the word for a female cat?\nA) Queen\nB) Empress\nC) Both A and D\nD) Molly\n>>  "
 
 medScore:			.asciiz "\nYour score for the Medium section is %"
 medPass:			.asciiz "\nPawsitively stellar! You got a great score! Would you like to advance to the difficult level?\n>>  "
-medFail:			.asciiz "\nWhat an unfurtunate turn of events. Visit the learn section before trying again, maybe!\n>>  "
+medFail:			.asciiz "\nWhat an unfurtunate turn of events. Visit the learn section before trying again, maybe!\nLearn Section Code: 9\n"
 
-hardQOne:			.asciiz "\nQuestion #1\nQuestion?\nA)Wrong\nB)Right\nC)Wrong\nD)Wrong\n>>  "
-hardQTwo:			.asciiz "\nQuestion #2\nQuestion?\nA)Right\nB)Wrong\nC)Wrong\nD)Wrong\n>>  "
-hardQThree:			.asciiz "\nQuestion #3\nQuestion?\nA)Wrong\nB)Wrong\nC)Wrong\nD)Right\n>>  "
-hardQFour:			.asciiz "\nQuestion #4\nQuestion?\nA)Wrong\nB)Wrong\nC)Right\nD)Wrong\n>>  "
-hardQFive:			.asciiz "\nQuestion #5\nTrue or False: Question.\n>> "
-hardQSix:			.asciiz "\nQuestion #6\nQuestion?\nA)Right\nB)Wrong\nC)Wrong\nD)Wrong\n>>  "
-hardQSeven:			.asciiz "\nQuestion #7\nQuestion?\nA)Wrong\nB)Right\nC)Wrong\nD)Wrong\n>>  "
-hardQEight:			.asciiz "\nQuestion #8\nQuestion?\nA)Wrong\nB)Wrong\nC)Right\nD)Wrong\n>>  "
-hardQNine:			.asciiz "\nQuestion #9\nQuestion?\nA)Wrong\nB)Wrong\nC)Wrong\nD)Right\n>>  "
-hardQTen:			.asciiz "\nQuestion #10\nTrue or False: Question.\n>> "
-hardQEleven:		.asciiz "\nQuestion #11\nQuestion?\nA)Wrong\nB)Wrong\nC)Wrong\nD)Right\n>>  "
-hardQTwelve:		.asciiz "\nQuestion #12\nQuestion?\nA)Right\nB)Wrong\nC)Wrong\nD)Wrong\n>>  "
-hardQThirteen:		.asciiz "\nQuestion #13\nQuestion?\nA)Right\nB)Wrong\nC)Wrong\nD)Wrong\n>>  "
-hardQFourteen:		.asciiz "\nQuestion #14\nQuestion?\nA)Wrong\nB)Right\nC)Wrong\nD)Wrong\n>>  "
-hardQFifteen:		.asciiz "\nQuestion #15\nTrue or False: Question.\n>> "
+hardQOne:			.asciiz "\nQuestion #1\nWhat is a group of adult cats called?\nA) Colony\nB) Clowder\nC) Pride\nD) Felinae\n>>  "
+hardQTwo:			.asciiz "\nQuestion #2\nWhich paw is the dominant paw in female cats?\nA) Right\nB) Left\nC) Ambidextrous\nD) The dominant paw varies depending on cat, not sex\n>>  "
+hardQThree:			.asciiz "\nQuestion #3\nWhich is the strong sense a cat possesses?\nA) Sight\nB) Olfactory\nC) Smell\nD) Hearing\n>>  "
+hardQFour:			.asciiz "\nQuestion #4\nWhich is the oldest breed of cat?\nA) American Shorthair\nB) Siamese\nC) Egyptian Mau\nD) Persian\n>>  "
+hardQFive:			.asciiz "\nQuestion #5\nTrue or False: The wah-wah vocalisation is present in domestic cats.\n>> "
+hardQSix:			.asciiz "\nQuestion #6\nThe popular 'saber-toothed cats' belong to this subfamily.\nA) Machairodontinae\nB) Pantherinae\nC) Proailurinae\nD) Felinae\n>>  "
+hardQSeven:			.asciiz "\nQuestion #7\nThe U.S. population of feral cats numbers in this range.\nA) 15-30 Million\nB) 25-60 Million\nC) 70 Million+\nD) 11-23 Million\n>>  "
+hardQEight:			.asciiz "\nQuestion #8\nWhat is the level of conservation for Clouded Leopards?\nA) Critically Endangered\nB) Extinct\nC) Vulnerable\nD) Least Concern\n>>  "
+hardQNine:			.asciiz "\nQuestion #9\nDomestic house cats can run at approximately this speed.\nA) 15 MPH\nB) 50 MPH\nC) 20 MPH\nD) 30 MPH\n>>  "
+hardQTen:			.asciiz "\nQuestion #10\nTrue or False: A group of kittens is called a kindle.\n>> "
+hardQEleven:		.asciiz "\nQuestion #11\nThis feline does not sheath it's claws at rest.\nA) Lion\nB) Feral cat\nC) Tiger\nD) Cheetah\n>>  "
+hardQTwelve:		.asciiz "\nQuestion #12\nWhich is descriptive of how a cat walks?\nA) Digitigrade\nB) Plantigrades\nC) Unguligrades.\nD) Biped\n>>  "
+hardQThirteen:		.asciiz "\nQuestion #13\nWhat is the Family to which domestic cats belong?\nA) Felidae\nB) Prionodontidae\nC) Herpestidae\nD) Viverridae\n>>  "
+hardQFourteen:		.asciiz "\nQuestion #14\nThis breed of cat likes water.\nA) Norwegian Forest Cat\nB) Turkish Van\nC) Siamese\nD) Egyptian Mau\n>>  "
+hardQFifteen:		.asciiz "\nQuestion #15\nTrue or False: Cats can survive by drinking salt water.\n>> "
 
 hardScore:			.asciiz "\nYour score for the Difficult section is %"
 hardPass:			.asciiz "\nYou must be a cat expurrt! You got a great score!"
-hardFail:			.asciiz "\nConcatulations at making it this far, but you just didn't make the cut. Visit the learn section before trying again, maybe!\n>>  "
+hardFail:			.asciiz "\nConcatulations at making it this far, but you just didn't make the cut. Visit the learn section before trying again, maybe!\nLearn Section Code: 12\n"
 
-expertMode:			.asciiz "\nBecause you're so good at Catechism, you've unlocked the super secret Expert Mode!"
-expQOne:			.asciiz "\nQuestion #1\nQuestion?\nA)Wrong\nB)Right\nC)Wrong\nD)Wrong\n>>  "
-expQTwo:			.asciiz "\nQuestion #2\nQuestion?\nA)Wrong\nB)Wrong\nC)Right\nD)Wrong\n>>  "
-expQThree:			.asciiz "\nQuestion #3\nQuestion?\nA)Right\nB)Wrong\nC)Wrong\nD)Wrong\n>>  "
+expertMode:			.asciiz "\nBecause you're so good at Catechism, you've unlocked the super secret Expert Mode! Would you like to advance?\n>>  "
+expQOne:			.asciiz "\nQuestion #1\nWhat condition of the paws in cats can result in more than the average 18 toes?\nA)Dypodia\nB)Polydactylism\nC)Hyperdactypodia\nD)Polypodia\n>>  "
+expQTwo:			.asciiz "\nQuestion #2\nThis is the earliest known ancestor of the modern cat.\nA)Pseudaelurus\nB)Neofelis diardi\nC)Proailurus\nD)Machairodontinae\n>>  "
+expQThree:			.asciiz "\nQuestion #3\nWhich terms appropriately describe a cat's reproductive qualities?\nA)Polyestrous superfecund\nB)Monoestrous superfetal\nC)Diestrous superfetal\nD)Continual estrous phase, superfecund\n>>  "
+
 expScore:			.asciiz "\nYour score for the Expert section is %"
-expPass:			.asciiz "\nTickle my whiskers and call me a cat! You're the best! GREAT job!"
-expFail:			.asciiz "\nYou made it so fur! Great job!"
+expPass:			.asciiz "\nTickle my whiskers and call me a cat! You're the best! GREAT job!\n"
+expFail:			.asciiz "\nYou made it so fur! Great job!\nLearn Section Code: 0\n"
 
 bye:				.asciiz "\nThanks for playing Catechism!"
 
 .globl				main
 
 .text
+
+	loadLogo:
+	
+		li		$v0, 4					#alert to print string
+		la		$a0, logo				#load address of string 'logo'
+		syscall							#execute print
 
 	main:
 
@@ -86,16 +105,12 @@ bye:				.asciiz "\nThanks for playing Catechism!"
 		li	$t5, 13						#constant
 		li	$t6, 14						#constant
 		li	$t7, 15						#constant; counter compare point
-		li	$t8, 0						#question counter
+		li	$t8, 1						#question counter
 		li	$t9, 0						#increment counter
 		li	$a3, 0						#decrement counter
 		li	$a1, 100					#constant
-
+		
 	mainMenu:
-
-		li		$v0, 4					#alert to print string
-		la		$a0, logo				#load address of string 'logo'
-		syscall							#execute print
 
 		li		$v0, 4					#alert to print string
 		la		$a0, greeting			#load address of string 'greeting'
@@ -125,8 +140,8 @@ bye:				.asciiz "\nThanks for playing Catechism!"
 		syscall							#execute read
 
 		beq		$v0, $s1, eQOne			#branch to 'easy' if value = 1
-		beq		$v0, $s2, mQOne			#branch to 'medium' if value = 2
-		beq		$v0, $s3, dQOne			#branch to 'difficult' if value = 3
+		beq		$v0, $s2, reInit1		#branch to 'medium' if value = 2
+		beq		$v0, $s3, reInit2		#branch to 'difficult' if value = 3
 		bgt		$v0, $s3, throwError	#branch to 'throwError' if > 3
 		blt		$v0, $s1, throwError	#branch to 'throwError' if < 1
 
@@ -150,7 +165,17 @@ bye:				.asciiz "\nThanks for playing Catechism!"
 		la		$a0, explain			#load address of string 'explain'
 		syscall							#execute print
 
-		b		mainMenu				#branch back to 'mainMenu' when print executed
+		li		$v0, 4					#alert to print string
+		la		$a0, askReturn			#load address of string 'askReturn'
+		syscall							#execute print
+
+		li		$v0, 5					#alert to read integer
+		syscall							#execute read
+
+		beq		$v0, $s1, mainMenu		#branch to mainMenu if input = 1
+		beq		$v0, $s2, close			#branch to close if input = 2
+		blt		$v0, $s1, throwError	#invalid input check
+		bgt		$v0, $s2, throwError	#invalid input check
 
 	credits:
 
@@ -158,12 +183,164 @@ bye:				.asciiz "\nThanks for playing Catechism!"
 		la		$a0, furtherInformation	#load address of string 'furtherInformation'
 		syscall							#execute print
 
-		b		mainMenu				#branch back to 'mainMenu' when print executed
+		li		$v0, 4					#alert to print string
+		la		$a0, askReturn			#load address of string 'askReturn'
+		syscall							#execute print
+
+		li		$v0, 5					#alert to read integer
+		syscall							#execute read
+
+		beq		$v0, $s1, mainMenu		#branch to mainMenu if input = 1
+		beq		$v0, $s2, close			#branch to close if input = 2
+		blt		$v0, $s1, throwError	#invalid input check
+		bgt		$v0, $s2, throwError	#invalid input check
 
 	learn:								#section contains all answers
 
+		li		$v0, 4					#alert to print string
+		la		$a0, selection3			#load address of string 'selection3'
+		syscall							#execute print
+
+		li		$v0, 5					#alert to read integer
+		syscall							#execute read
+
+		beq		$v0, $s1, eAccess		#branch to eAccess if input = 1
+		beq		$v0, $s2, mAccess		#branch to mAccess if input = 2
+		beq		$v0, $s3, dAccess		#branch to dAccess if input = 3
+		beq		$v0, $s4, xAccess		#branch to xAccess if input = 4
+		blt		$v0, $s1, throwError	#invalid input check
+		bgt		$v0, $s4, throwError	#invalid input check
+
+	eAccess:
+
+		li		$v0, 4					#alert to print string
+		la		$a0, eLearnAccess		#load address of string 'eLearnAccess'
+		syscall							#execute print
+
+		li		$v0, 5					#alert to read integer
+		syscall							#execute read
+
+		beq		$v0, $s5, eLearn		#if input = 5, advance to eLearn
+		bgt		$v0, $s5, throwError	#invalid access code
+		blt		$v0, $s5, throwError	#invalid access code
+
+	mAccess:
+
+		li		$v0, 4					#alert to print string
+		la		$a0, mLearnAccess		#load address of string 'mLearnAccess'
+		syscall							#execute print
+
+		li		$v0, 5					#alert to read integer
+		syscall							#execute read
+
+		beq		$v0, $t1, mLearn		#if input = 9, advance to mLearn
+		bgt		$v0, $t1, throwError	#invalid access code
+		blt		$v0, $t1, throwError	#invalid access code
+
+	dAccess:
+
+		li		$v0, 4					#alert to print string
+		la		$a0, dLearnAccess		#load address of string 'dLearnAccess'
+		syscall							#execute print
+
+		li		$v0, 5					#alert to read integer
+		syscall							#execute read
+
+		beq		$v0, $t4, dLearn		#if input = 12, advance to dLearn
+		bgt		$v0, $t4, throwError	#invalid access code
+		blt		$v0, $t4, throwError	#invalid access code
+
+	xAccess:
+
+		li		$v0, 4					#alert to print string
+		la		$a0, xLearnAccess		#load address of string 'xLearnAccess'
+		syscall							#execute print
+
+		li		$v0, 5					#alert to read integer
+		syscall							#execute read
+
+		beq		$v0, $zero, xLearn		#if input = 0, advance to xLearn
+		bgt		$v0, $zero, throwError	#invalid access code
+		blt		$v0, $zero, throwError	#invalid access code
+
+	eLearn:
+
+		li		$v0, 4					#alert to print string
+		la		$a0, easyInfo			#load address of string 'easyInfo'
+		syscall							#execute print
+
+		li		$v0, 4					#alert to print string
+		la		$a0, askReturn			#load address of string 'askReturn'
+		syscall							#execute print
+
+		li		$v0, 5					#alert to read integer
+		syscall							#execute read
+
+		beq		$v0, $s1, mainMenu		#branch to mainMenu if input = 1
+		beq		$v0, $s2, close			#branch to close if input = 2
+		blt		$v0, $s1, throwError	#invalid input check
+		bgt		$v0, $s2, throwError	#invalid input check
+
+	mLearn:
+
+		li		$v0, 4					#alert to print string
+		la		$a0, mediumInfo			#load address of string 'mediumInfo'
+		syscall							#execute print
+
+		li		$v0, 4					#alert to print string
+		la		$a0, askReturn			#load address of string 'askReturn'
+		syscall							#execute print
+
+		li		$v0, 5					#alert to read integer
+		syscall							#execute read
+
+		beq		$v0, $s1, mainMenu		#branch to mainMenu if input = 1
+		beq		$v0, $s2, close			#branch to close if input = 2
+		blt		$v0, $s1, throwError	#invalid input check
+		bgt		$v0, $s2, throwError	#invalid input check
+
+	dLearn:
+
+		li		$v0, 4					#alert to print string
+		la		$a0, difficultInfo			#load address of string 'difficultInfo'
+		syscall							#execute print
+
+		li		$v0, 4					#alert to print string
+		la		$a0, askReturn			#load address of string 'askReturn'
+		syscall							#execute print
+
+		li		$v0, 5					#alert to read integer
+		syscall							#execute read
+
+		beq		$v0, $s1, mainMenu		#branch to mainMenu if input = 1
+		beq		$v0, $s2, close			#branch to close if input = 2
+		blt		$v0, $s1, throwError	#invalid input check
+		bgt		$v0, $s2, throwError	#invalid input check
+
+	xLearn:
+
+		li		$v0, 4					#alert to print string
+		la		$a0, expertInfo			#load address of string 'expertInfo'
+		syscall							#execute print
+
+		li		$v0, 4					#alert to print string
+		la		$a0, askReturn			#load address of string 'askReturn'
+		syscall							#execute print
+
+		li		$v0, 5					#alert to read integer
+		syscall							#execute read
+
+		beq		$v0, $s1, mainMenu		#branch to mainMenu if input = 1
+		beq		$v0, $s2, close			#branch to close if input = 2
+		blt		$v0, $s1, throwError	#invalid input check
+		bgt		$v0, $s2, throwError	#invalid input check
+
 	eQOne:
 
+		li		$v0, 4					#alert to print string
+		la		$a0, explain			#load address of string 'explain'
+		syscall							#execute print
+		
 		li		$v0, 4					#alert to print string
 		la		$a0, easyQOne			#load address of string 'easyQOne'
 		syscall							#execute print
@@ -237,7 +414,7 @@ bye:				.asciiz "\nThanks for playing Catechism!"
 		beq		$v0, $s3, eQThree		#counter=3, question 3
 		beq		$v0, $s4, eQFour		#counter=4, question 4
 		beq		$v0, $s5, eQFive		#counter=5, question 5
-		bgt		$v0, $t8, eTally		#counter>5, eTally
+		bgt		$v0, $s5, eTally		#counter>5, eTally
 
 	decrEScore:
 
@@ -249,12 +426,12 @@ bye:				.asciiz "\nThanks for playing Catechism!"
 		beq		$v0, $s3, eQThree		#counter=3, question 3
 		beq		$v0, $s4, eQFour		#counter=4, question 4
 		beq		$v0, $s5, eQFive		#counter=5, question 5
-		bgt		$v0, $t8, eTally		#counter>5, eTally
+		bgt		$v0, $s5, eTally		#counter>5, eTally
 
 	eTally:
 
 		beq		$t9, $s5, eWin			#if increment counter = 5, branch to Easy Win
-		bltu 	$a3, $s5, eLoss			#if decrement counter < 5, branch to Easy Loss
+		bgeu 	$a3, $s1, eLoss			#if decrement counter >= 1, branch to Easy Loss
 
 	eWin:
 		
@@ -275,8 +452,8 @@ bye:				.asciiz "\nThanks for playing Catechism!"
 		li		$v0, 5					#alert to read integer
 		syscall							#execute read
 
-		beq		$v0, $s2, mQOne			#branch to medium section if '2' for 'Yes' is the input
-		beq		$v0, $s1, main			#branch to 'mainMenu' if '1' for 'No' is the input
+		beq		$v0, $s1, reInit1		#branch to medium section if '1' for 'Yes' is the input
+		beq		$v0, $s2, main			#branch to 'mainMenu' if '2' for 'No' is the input
 		bgt		$v0, $s2, throwError	#branch to 'throwError' if input > 2
 		blt		$v0, $s1, throwError	#branch to 'throwError' if input < 1
 
@@ -286,10 +463,10 @@ bye:				.asciiz "\nThanks for playing Catechism!"
 		la		$a0, easyScore			#load address of string 'easyScore'
 		syscall							#execute print
 
-		mul		$a3, $a3, 20			#multiply by 20
+		mul		$t9, $t9, 20			#multiply by 20
 
 		li		$v0, 1					#alert to print integer
-		move	$a0, $a3				#load always to $a0
+		move	$a0, $t9				#load always to $a0
 		syscall							#execute print
 		
 		li		$v0, 4					#alert to print string
@@ -316,13 +493,17 @@ bye:				.asciiz "\nThanks for playing Catechism!"
 		li	$t5, 13						#constant
 		li	$t6, 14						#constant
 		li	$t7, 15						#constant; counter compare point
-		li	$t8, 0						#question counter
+		li	$t8, 1						#question counter
 		li	$t9, 0						#increment counter
 		li	$a3, 0						#decrement counter
 		li	$a1, 100					#constant
 
 	mQOne:
 
+		li		$v0, 4					#alert to print string
+		la		$a0, explain			#load address of string 'explain'
+		syscall							#execute print
+		
 		li		$v0, 4					#alert to print string
 		la		$a0, medQOne			#load address of string 'medQOne'
 		syscall							#execute print
@@ -343,9 +524,9 @@ bye:				.asciiz "\nThanks for playing Catechism!"
 		li		$v0, 5					#alert to read integer
 		syscall							#execute read
 
-		beq		$v0, $s3, incrMScore	#if 'C' selected, branch to incrMScore (value = 3)
-		bgt		$v0, $s3, decrMScore	#if 'C' not selected branch to decrMScore (value > 3)
-		blt		$v0, $s3, decrMScore	#if 'C' not selected branch to decrMScore (value < 3)
+		beq		$v0, $s4, incrMScore	#if 'D' selected, branch to incrMScore (value = 4)
+		bgt		$v0, $s4, decrMScore	#if 'D' not selected branch to decrMScore (value > 4)
+		blt		$v0, $s4, decrMScore	#if 'D' not selected branch to decrMScore (value < 4)
 
 	mQThree:
 
@@ -466,7 +647,7 @@ bye:				.asciiz "\nThanks for playing Catechism!"
 		beq		$v0, $t0, mQEight		#counter=8, question 8
 		beq		$v0, $t1, mQNine		#counter=9, question 9
 		beq		$v0, $t2, mQTen			#counter=10, question 10
-		bgt		$v0, $t2, eTally		#counter>10, eTally
+		bgt		$v0, $t2, mTally		#counter>10, mTally
 
 	decrMScore:
 
@@ -483,7 +664,7 @@ bye:				.asciiz "\nThanks for playing Catechism!"
 		beq		$v0, $t0, mQEight		#counter=8, question 8
 		beq		$v0, $t1, mQNine		#counter=9, question 9
 		beq		$v0, $t2, mQTen			#counter=10, question 10
-		bgt		$v0, $t2, eTally		#counter>10, eTally
+		bgt		$v0, $t2, mTally		#counter>10, mTally
 
 	mTally:
 
@@ -509,8 +690,8 @@ bye:				.asciiz "\nThanks for playing Catechism!"
 		li		$v0, 5					#alert to read integer
 		syscall							#execute read
 
-		beq		$v0, $s2, dQOne			#branch to difficult section if '2' for 'Yes' is the input
-		beq		$v0, $s1, main			#branch to 'mainMenu' if '1' for 'No' is the input
+		beq		$v0, $s1, reInit2		#branch to difficult section if '1' for 'Yes' is the input
+		beq		$v0, $s2, main			#branch to 'mainMenu' if '2' for 'No' is the input
 		bgt		$v0, $s2, throwError	#branch to 'throwError' if input > 2
 		blt		$v0, $s1, throwError	#branch to 'throwError' if input < 1
 
@@ -548,12 +729,16 @@ bye:				.asciiz "\nThanks for playing Catechism!"
 		li	$t5, 13						#constant
 		li	$t6, 14						#constant
 		li	$t7, 15						#constant; counter compare point
-		li	$t8, 0						#question counter
+		li	$t8, 1						#question counter
 		li	$t9, 0						#increment counter
 		li	$a3, 0						#decrement counter
 		li	$a1, 100					#constant
 
 	dQOne:
+
+		li		$v0, 4					#alert to print string
+		la		$a0, explain			#load address of string 'explain'
+		syscall							#execute print
 
 		li		$v0, 4					#alert to print string
 		la		$a0, hardQOne			#load address of string 'hardQOne'
@@ -744,9 +929,9 @@ bye:				.asciiz "\nThanks for playing Catechism!"
 		li		$v0, 5					#alert to read integer
 		syscall							#execute read
 
-		beq		$v0, $s2, incrDScore	#if 'False' selected, branch to incrDScore (value = 2)
-		bgt		$v0, $s2, decrDScore	#if 'False' not selected branch to decrDScore (value > 2)
-		blt		$v0, $s2, decrDScore	#if 'False' not selected branch to decrDScore (value < 2)
+		beq		$v0, $s1, incrDScore	#if 'True' selected, branch to incrDScore (value = 1)
+		bgt		$v0, $s1, decrDScore	#if 'True' not selected branch to decrDScore (value > 1)
+		blt		$v0, $s1, decrDScore	#if 'True' not selected branch to decrDScore (value < 1)
 
 	incrDScore:
 		
@@ -768,7 +953,7 @@ bye:				.asciiz "\nThanks for playing Catechism!"
 		beq		$v0, $t5, dQThirteen	#counter=13, question 13
 		beq		$v0, $t6, dQFourteen	#counter=14, question 14
 		beq		$v0, $t7, dQFifteen		#counter=15, question 15
-		bgt		$v0, $t7, eTally		#counter>15, eTally
+		bgt		$v0, $t7, dTally		#counter>15, dTally
 
 	decrDScore:
 
@@ -790,21 +975,22 @@ bye:				.asciiz "\nThanks for playing Catechism!"
 		beq		$v0, $t5, dQThirteen	#counter=13, question 13
 		beq		$v0, $t6, dQFourteen	#counter=14, question 14
 		beq		$v0, $t7, dQFifteen		#counter=15, question 15
-		bgt		$v0, $t7, eTally		#counter>15, eTally
+		bgt		$v0, $t7, dTally		#counter>15, dTally
 
 	dTally:
 
 		bgeu	$t9, $t5, dWin			#if increment counter >= 13, branch to Difficult Win
-		bgtu		$a3, $s2, dLoss			#if decrement counter > 2, branch to Difficult Loss
+		bgtu	$a3, $s2, dLoss			#if decrement counter > 2, branch to Difficult Loss
 
 	dWin:
+
+		mul		$t9, $t9, $a1			#multiply incr. counter by 100
+		div		$t9, $t7				#divide by 15
+		mflo	$t9						#place quotient in low register
 
 		li		$v0, 4					#alert to print string
 		la		$a0, hardScore			#load address of string 'hardScore'
 		syscall							#execute print
-
-		div		$t9, $t9, $t7			#divide incr. counter by 15
-		mul		$t9, $t9, $a1			#multiply by 100
 
 		li		$v0, 1					#alert to print integer
 		move	$a0, $t9				#load always to $a0
@@ -814,22 +1000,27 @@ bye:				.asciiz "\nThanks for playing Catechism!"
 		la		$a0, hardPass			#load address of string 'hardPass'
 		syscall							#execute print
 
+		li		$v0, 4					#alert to print string
+		la		$a0, expertMode			#load address of string 'expertMode'
+		syscall
+
 		li		$v0, 5					#alert to read integer
 		syscall							#execute read
 
-		beq		$v0, $s2, xQOne			#branch to expert section if '2' for 'Yes' is the input
-		beq		$v0, $s1, main			#branch to 'mainMenu' if '1' for 'No' is the input
+		beq		$v0, $s1, reInit3		#branch to expert section if '1' for 'Yes' is the input
+		beq		$v0, $s2, main			#branch to 'mainMenu' if '2' for 'No' is the input
 		bgt		$v0, $s2, throwError	#branch to 'throwError' if input > 2
 		blt		$v0, $s1, throwError	#branch to 'throwError' if input < 1
 
 	dLoss:
 
+		mul		$a3, $a3, $a1			#multiply decr. counter by 100
+		div		$a3, $t7				#divide by 15
+		mflo	$a3						#place quotient in low register
+		
 		li		$v0, 4					#alert to print string
 		la		$a0, hardScore			#load address of string 'hardScore'
 		syscall							#execute print
-
-		div		$a3, $a3, $t7			#divide decr. counter by 15
-		mul		$a3, $a3, $a1			#multiply by 100
 
 		li		$v0, 1					#alert to print integer
 		move	$a0, $a3				#load always to $a0
@@ -859,7 +1050,7 @@ bye:				.asciiz "\nThanks for playing Catechism!"
 		li	$t5, 13						#constant
 		li	$t6, 14						#constant
 		li	$t7, 15						#constant; counter compare point
-		li	$t8, 0						#question counter
+		li	$t8, 1						#question counter
 		li	$t9, 0						#increment counter
 		li	$a3, 0						#decrement counter
 		li	$a1, 100					#constant
@@ -911,7 +1102,7 @@ bye:				.asciiz "\nThanks for playing Catechism!"
 	
 		beq		$v0, $s2, xQTwo			#counter=2, question 2
 		beq		$v0, $s3, xQThree		#counter=3, question 3
-		bgt		$v0, $s3, eTally		#counter>3, eTally
+		bgt		$v0, $s3, xTally		#counter>3, xTally
 
 	decrXScore:
 
@@ -921,12 +1112,12 @@ bye:				.asciiz "\nThanks for playing Catechism!"
 	
 		beq		$v0, $s2, xQTwo			#counter=2, question 2
 		beq		$v0, $s3, xQThree		#counter=3, question 3
-		bgt		$v0, $s3, eTally		#counter>3, eTally
+		bgt		$v0, $s3, xTally		#counter>3, xTally
 
 	xTally:
 
 		beq		$t9, $s3, xWin			#if increment counter = 3, branch to Expert Win
-		bleu	$a3, $s2, xLoss			#if decrement counter <= 2, branch to Expert Loss
+		bltu	$t9, $s3, xLoss			#if increment counter < 3, branch to Expert Loss
 
 	xWin:
 
@@ -934,8 +1125,9 @@ bye:				.asciiz "\nThanks for playing Catechism!"
 		la		$a0, expScore			#load address of string 'expScore'
 		syscall							#execute print
 
-		div		$t9, $t9, $s3			#divide counter by 3
 		mul		$t9, $t9, $a1			#multiply by 100
+		div		$t9, $s3				#divide counter by 3
+		mflo	$t9 					#place quotient in low register
 
 		li		$v0, 1					#alert to print integer
 		move	$a0, $t9				#load always to $a0
@@ -949,15 +1141,16 @@ bye:				.asciiz "\nThanks for playing Catechism!"
 
 	xLoss:
 
+		mul		$t9, $t9, $a1			#multiply by 100
+		div		$t9, $s3				#divide counter by 3
+		mflo	$t9 					#place quotient in low register
+
 		li		$v0, 4					#alert to print string
 		la		$a0, expScore			#load address of string 'expScore'
 		syscall							#execute print
 
-		div		$a3, $a3, $s3			#divide counter by 3
-		mul		$a3, $a3, $a1			#multiply by 100
-
 		li		$v0, 1					#alert to print integer
-		move	$a0, $s0				#load always to $a0
+		move	$a0, $t9				#load always to $a0
 		syscall							#execute print
 		
 		li		$v0, 4					#alert to print string
